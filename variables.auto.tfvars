@@ -1,5 +1,5 @@
 credentials        = "./terraform-gkecluster-keyfile.json"
-project_id         = "gke-1-355907"
+project_id         = "tf-gke-01"
 region             = "europe-west1"
 zones              = ["europe-west1-b", "europe-west1-c", "europe-west1-d"]
 name               = "gke-cluster"
