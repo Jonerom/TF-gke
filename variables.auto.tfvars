@@ -1,5 +1,5 @@
 credentials        = "./terraform-gkecluster-keyfile.json"
-project_id         = "tf-gke-01"
+project_id         = "<gcp_project_name>"
 region             = "europe-west1"
 zones              = ["europe-west1-b", "europe-west1-c", "europe-west1-d"]
 name               = "gke-cluster"
@@ -7,5 +7,8 @@ machine_type       = "g1-small"
 min_count          = 1
 max_count          = 3
 disk_size_gb       = 10
-service_account    = "gke-sa@var.project_id.iam.gserviceaccount.com"
-initial_node_count = 3
+service_account    = "gke-sa@<gcp_project_name>.iam.gserviceaccount.com"
+initial_node_count = 1
+agent_namespace    = "gitlab-agent"
+agent_token        = "paste from Infrastructure > Kubernetes cluster >  connect to a cluster > select gitlab-agent"
+kas_address        = "wss://kas.gitlab.com"
