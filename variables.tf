@@ -52,3 +52,16 @@ variable "initial_node_count" {
   type        = number
   description = "The number of nodes to create in this cluster's default node pool."
 }
+
+variable "agent_namespace" {
+  description = "Kubernetes namespace to install the Agent"
+}
+
+variable "agent_token" {
+  description = "Agent token (provided when registering an Agent in GitLab)"
+  sensitive   = true
+}
+
+variable "kas_address" {
+  description = "Agent Server address (provided when registering an Agent in GitLab)"
+}
