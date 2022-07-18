@@ -1,1 +1,1 @@
-{}
+#run gcloud iam service-accounts keys create terraform-gkecluster-keyfile.json --iam-account=gke-sa@<gcp_project_name>.iam.gserviceaccount.com
