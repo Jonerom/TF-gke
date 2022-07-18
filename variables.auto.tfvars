@@ -7,5 +7,5 @@ machine_type       = "g1-small"
 min_count          = 1
 max_count          = 3
 disk_size_gb       = 10
-service_account    = "gke-sa@gke-1-355907.iam.gserviceaccount.com"
+service_account    = "gke-sa@var.project_id.iam.gserviceaccount.com"
 initial_node_count = 3
