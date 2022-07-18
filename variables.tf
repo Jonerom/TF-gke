@@ -54,14 +54,17 @@ variable "initial_node_count" {
 }
 
 variable "agent_namespace" {
+  type        = string
   description = "Kubernetes namespace to install the Agent"
 }
 
 variable "agent_token" {
+  type        = string
   description = "Agent token (provided when registering an Agent in GitLab)"
   sensitive   = true
 }
 
 variable "kas_address" {
+  type        = string
   description = "Agent Server address (provided when registering an Agent in GitLab)"
 }
