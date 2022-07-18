@@ -2,4 +2,3 @@ terraform {
   backend "http" {
   }
 }
-
