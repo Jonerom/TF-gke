@@ -1,5 +1,6 @@
 include:
-  - template: Terraform.gitlab-ci.yml
+  - template: Terraform/Base.gitlab-ci.yml  # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Terraform/Base.gitlab-ci.yml
+  - template: Jobs/SAST-IaC.gitlab-ci.yml   # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Jobs/SAST-IaC.gitlab-ci.yml
 
 variables:
   # If not using GitLab's HTTP backend, remove this line and specify TF_HTTP_* variables
@@ -7,3 +8,34 @@ variables:
   TF_CACHE_KEY: default
   # If your terraform files are in a subdirectory, set TF_ROOT accordingly
   # TF_ROOT: terraform/production
+
+stages:
+  - validate
+  - test
+  - build
+  - deploy
+  - cleanup
+
+fmt:
+  extends: .terraform:fmt
+  needs: []
+
+validate:
+  extends: .terraform:validate
+  needs: []
+
+build:
+  extends: .terraform:build
+
+deploy:
+  extends: .terraform:deploy
+  dependencies:
+    - build
+  environment:
+    name: $TF_STATE_NAME
+
+cleanup:
+  extends: .terraform:destroy
+  needs: []
+  environment:
+    name: $TF_STATE_NAME
